@@ -44,8 +44,8 @@ const RegisterManager: React.FC = () => {
 				<div>
 					<p>
 					By using any web site function (“Sites”) or by using any services of Rematic and or its subsidies (“Rematic”), you are agreeing to be bound by the following terms and conditions (“Terms of Service”). Rematic reserves the right to update and change the Terms of Service from time to time without notice. You can review the most current version of the Terms of Service at any time at:{" "}
-						<a href="https://vvpoly.vercel.app/manager/register" target="_blank" rel="noreferrer">
-						https://vvpoly.vercel.app/manager/register
+						<a href="https://vvbsc.vercel.app/manager/register" target="_blank" rel="noreferrer">
+						https://vvbsc.vercel.app/manager/register
 						</a>
 					</p>
 					<div>

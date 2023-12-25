@@ -18,7 +18,7 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 
 
-const chains:any[] = [polygon]
+const chains:any[] = [bsc]
 
 const projectId = process.env.REACT_APP_PROJECT_ID || ""
 
@@ -55,6 +55,10 @@ root.render(
 			</WagmiConfig>
 			<Web3Modal
 				themeMode="dark"
+				themeVariables={{
+					"--w3m-background-color":"#730fc3",
+					"--w3m-accent-color":"#730fc3"
+				}}
 				projectId={projectId}
 				ethereumClient={ethereumClient}
 			/>

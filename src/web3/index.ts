@@ -6,7 +6,7 @@ import voteAbi from "../contracts/RMVoteMain.sol/abi"
 import pollAbi from "../contracts/Poll.sol/abi"
 import tokenAbi from "../contracts/ERC20.sol/abi"
 
-import { readContract, getAccount, writeContract, waitForTransaction, fetchBalance, getWalletClient, sendTransaction, prepareSendTransaction  } from "wagmi/actions"
+import { readContract, getAccount, writeContract, waitForTransaction, fetchBalance, getWalletClient, sendTransaction, prepareSendTransaction, getContract  } from "wagmi/actions"
 import { parseGwei, encodePacked, keccak256, toBytes, Address, parseEther } from "viem"
 import moment from "moment"
 import { requestUpdatePoll } from "@/axios/poll"
@@ -32,6 +32,13 @@ export const isManager = async () => {
 	let result = false
 	const { address } = getAccount()
 	if (!address) throw new Error("Please connect Wallet")
+
+	// const contract = getContract({
+	// 	address:getContractAddress(),
+	// 	abi:voteAbi
+	// })
+	// const isManager = await contract.read.isManager([address])
+	// console.log("isManager =======>", isManager)
 
 	try {
 		result = await readContract({
@@ -500,10 +507,12 @@ export const voteQuestions = async (
 }
 
 export const getVoteResult = async (
-	poll: Address	
+	poll: Address,	
+	pollCreator?: Address	
 ) => {
-	const { address } = getAccount()
+	let { address } = getAccount()
 	if (!address) throw new Error("Please connect Wallet")
+	if(pollCreator) address = pollCreator
 
 	const result = await readContract({
 		address:poll,
